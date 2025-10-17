@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  stroke-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: stroke-api
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL_PATH=/models/my_model.joblib
+    volumes:
+      - ./models:/models:ro
+    restart: unless-stopped
